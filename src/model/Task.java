@@ -5,18 +5,21 @@ import util.TaskStatusEnum;
 import java.util.Objects;
 
 public class Task {
-    protected int id = 0;
-    private String title;
-    private String description;
-    private TaskStatusEnum status;
+    protected int id;
+    protected String title;
+    protected String description;
+    protected TaskStatusEnum status;
     private static int counter = 0;
 
-    static {
-        counter++;
-    }
+//    static {
+//        counter++;
+//    }
 
-    public Task(){
-        this.id = counter;
+    public Task(String title, String description, TaskStatusEnum status){
+        this.status = status;
+        this.title = title;
+        this.description = description;
+        this.id = counter++;
     }
 
     @Override
@@ -30,6 +33,10 @@ public class Task {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -58,5 +65,15 @@ public class Task {
 
     public void setStatus(TaskStatusEnum status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

@@ -2,63 +2,60 @@ package dao;
 
 import model.Task;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Optional;
 
-public class TaskDao implements Dao<Task>{
-    private final List<Task> tasks;
+public class TaskDao implements Dao<Integer, Task> {
+    private final HashMap<Integer, Task> tasks;
+
+    @Override
+    public HashMap<Integer, Task> getAll() {
+        return tasks;
+    }
 
     public TaskDao() {
-        tasks = new ArrayList<>(); //todo написать мапу и переделать под нее логику
+        tasks = new HashMap<>();
     }
 
 
     @Override
-    public void clearAllTasks() {
+    public void clearAllObjects() {
         tasks.clear();
     }
 
     @Override
     public Optional<Task> findById(int id) {
-        for (Task task: tasks){
-            if (task.getId() == id) {
-                return Optional.of(task);
-            }
+        Task task = tasks.get(id);
+        if (task == null) {
+            return Optional.empty();
+        } else {
+            return Optional.of(task);
         }
-        return Optional.empty();
     }
 
     @Override
     public void add(Task object) {
-        tasks.add(object);
+        tasks.put(object.getId(), object);
     }
 
     @Override
     public boolean update(int id, Task object) {
-        for (Task task: tasks){
-            if (task.getId() == id) {
-                updateObject(task, object);
-                return true;
-            }
+        Task task = tasks.get(id);
+        if (task == null) {
+            return false;
         }
-        return false;
-    }
-
-    private void updateObject(Task task, Task inputTask){
-        task.setStatus(inputTask.getStatus());
-        task.setTitle(inputTask.getTitle());
-        task.setDescription(inputTask.getDescription());
+        object.setId(id);
+        tasks.put(id, object);
+        return true;
     }
 
     @Override
     public boolean remove(int id) {
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getId() == id) {
-                tasks.remove(i);
-                return true;
-            }
+        Task returnedTask = tasks.get(id);
+        if (returnedTask == null) {
+            return false;
         }
+        tasks.remove(id);
         return false;
     }
 }
