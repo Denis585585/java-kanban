@@ -1,25 +1,21 @@
-package Manager;
+package manager;
 
-import Data.Epic;
-import Data.Subtask;
-import Data.Task;
+import data.Epic;
+import data.Subtask;
+import data.Task;
 import util.Status;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TaskManager {
-    Limits limit;
     private int nextId = 1;
-    HashMap<Integer, Task> tasks = new HashMap<>();
-    HashMap<Integer, Epic> epics = new HashMap<>();
-    HashMap<Integer, Subtask> subtasks = new HashMap<>();
+    private final HashMap<Integer, Task> tasks = new HashMap<>();
+    private final HashMap<Integer, Epic> epics = new HashMap<>();
+    private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
 
-    public TaskManager(Limits limit) {
-        this.limit = limit;
-    }
 
-    public int generateId() {
+    private int generateId() {
         return nextId++;
     }
 
@@ -46,7 +42,7 @@ public class TaskManager {
         epics.put(epic.getId(), epic);
     }
 
-    public void updateEpicStatus(Epic epic) {
+    private void updateEpicStatus(Epic epic) {
         if (!epics.containsKey(epic.getId())) {
             return;
         }
@@ -124,17 +120,14 @@ public class TaskManager {
     }
 
     public Task findTaskById(int id) {
-        limit.add(tasks.get(id));
         return tasks.get(id);
     }
 
     public Epic findEpicById(int id) {
-        limit.add(epics.get(id));
         return epics.get(id);
     }
 
     public Subtask findSubtaskById(int id) {
-        limit.add(subtasks.get(id));
         return subtasks.get(id);
     }
 
@@ -183,11 +176,6 @@ public class TaskManager {
             }
         }
         return thisSubtasks;
-    }
-
-    public ArrayList<Task> getLimit() {
-        return limit.getLimit();
-
     }
 }
 

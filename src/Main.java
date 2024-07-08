@@ -1,14 +1,14 @@
-import Data.Epic;
-import Data.Subtask;
-import Data.Task;
-import Manager.Limits;
-import Manager.TaskManager;
+import data.Epic;
+import data.Subtask;
+import data.Task;
+
+import manager.TaskManager;
 import util.Status;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager(new Limits());
+        TaskManager taskManager = new TaskManager();
         Epic epic = new Epic("Epic", "JustDoIT");
         taskManager.addEpic(epic);
         System.out.println("Add epic");

@@ -1,14 +1,14 @@
-package Data;
+package data;
 
 import util.Status;
 
 import java.util.Objects;
 
 public class Task {
-    private int id; // уникальный айди
-    private String title; //название задачи
-    private String description; //описание задачи
-    private Status status;
+    protected int id; // уникальный айди
+    protected String title; //название задачи
+    protected String description; //описание задачи
+    protected Status status;
 
     public Task(String title, String description) {
         this.title = title;

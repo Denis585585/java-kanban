@@ -1,6 +1,4 @@
-package Data;
-
-import util.Status;
+package data;
 
 public class Subtask extends Task {
     private final int epicId;
