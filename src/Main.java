@@ -2,13 +2,14 @@ import data.Epic;
 import data.Subtask;
 import data.Task;
 
-import manager.TaskManager;
+import manager.InMemoryHistoryManager;
+import manager.InMemoryTaskManager;
 import util.Status;
 
 public class Main {
 
     public static void main(String[] args) {
-        TaskManager taskManager = new TaskManager();
+        InMemoryTaskManager taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
         Epic epic = new Epic("Epic", "JustDoIT");
         taskManager.addEpic(epic);
         System.out.println("Add epic");
