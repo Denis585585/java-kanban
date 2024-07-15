@@ -22,7 +22,7 @@ class InMemoryHistoryManagerTest {
     @Test
     void addAndShouldGetHistory() {
         historyManager.add(task);
-        history = historyManager.getHistory();
+        history = (ArrayList<Task>) historyManager.getHistory();
 
         Assertions.assertNotNull(history);
         Assertions.assertEquals(1, history.size());
@@ -34,7 +34,7 @@ class InMemoryHistoryManagerTest {
         for (int i = 0; i < 15; i++) {
             historyManager.add(task);
         }
-        history = historyManager.getHistory();
+        history = (ArrayList<Task>) historyManager.getHistory();
         Assertions.assertEquals(10, history.size());
     }
 }

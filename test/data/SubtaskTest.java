@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SubtaskTest {
-TaskManager taskManager = new InMemoryTaskManager( new InMemoryHistoryManager());
+TaskManager taskManager = new InMemoryTaskManager();
     @Test
     void ifIdEqual() {
         Epic epic = new Epic("Epic1", "2133");

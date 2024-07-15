@@ -7,16 +7,17 @@ import util.Status;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    InMemoryHistoryManager defaultHistory;
+    private final InMemoryHistoryManager defaultHistory;
     private int nextId = 1;
     private final HashMap<Integer, Task> tasks = new HashMap<>();
     private final HashMap<Integer, Epic> epics = new HashMap<>();
     private final HashMap<Integer, Subtask> subtasks = new HashMap<>();
 
-    public InMemoryTaskManager(InMemoryHistoryManager defaultHistory) {
-        this.defaultHistory = defaultHistory;
+    public InMemoryTaskManager() {
+        this.defaultHistory = Managers.getDefaultHistory();
     }
 
 
@@ -205,7 +206,8 @@ public class InMemoryTaskManager implements TaskManager {
         return thisSubtasks;
     }
 
-    public ArrayList<Task> getHistory() {
+    @Override
+    public List<Task> getHistory() {
         return defaultHistory.getHistory();
     }
 }

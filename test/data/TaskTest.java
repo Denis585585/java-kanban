@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TaskTest {
-    TaskManager taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
+    TaskManager taskManager = new InMemoryTaskManager();
 
     @Test
     void ifIdEqual() {

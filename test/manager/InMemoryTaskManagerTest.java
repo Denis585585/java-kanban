@@ -16,7 +16,7 @@ class InMemoryTaskManagerTest {
 
     @BeforeEach
     void beforeEach() {
-        taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
+        taskManager = new InMemoryTaskManager();
         epic = new Epic("Epic1", "Epic description1");
         task = new Task("Task", "Task description");
         subtask = new Subtask("Subtask", "Subtask description", epic.getId());
