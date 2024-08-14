@@ -41,7 +41,7 @@ class InMemoryHistoryManagerTest {
 
         history.remove(subtask.getId());
 
-        assertEquals(history.getHistory(), List.of(task, epic));
+        assertEquals(history.getHistory(), List.of(epic, task));
     }
 
     @Test
@@ -51,6 +51,6 @@ class InMemoryHistoryManagerTest {
         history.add(subtask);
         history.add(task);
 
-        assertNotEquals(task, history.getHistory().getFirst());
+        assertNotEquals(task, history.getHistory().getLast());
     }
 }
