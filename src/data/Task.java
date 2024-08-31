@@ -10,7 +10,7 @@ public class Task {
     protected String description; //описание задачи
     protected Status status;
 
-    public Task(String title, String description) {
+    public Task(int id, String title, Status status, String description) {
         this.title = title;
         this.description = description;
         this.status = Status.NEW;

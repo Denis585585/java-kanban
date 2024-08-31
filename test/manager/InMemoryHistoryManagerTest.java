@@ -4,6 +4,8 @@ import data.Subtask;
 import data.Task;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import util.Status;
+
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,9 +18,9 @@ class InMemoryHistoryManagerTest {
 
     @BeforeAll
     static void beforeAll() {
-        task = new Task("Title", "New description");
-        epic = new Epic("Epic", "Epic's name");
-        subtask = new Subtask("Subtask", "Subtask's name", 3);
+        task = new Task(1, "Title", Status.NEW, "New description");
+        epic = new Epic(2, "Epic", Status.NEW, "Epic's name");
+        subtask = new Subtask(3, "Subtask", Status.NEW, "Subtask's name", 3);
 
         task.setId(1);
         epic.setId(2);
