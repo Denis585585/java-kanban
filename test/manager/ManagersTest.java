@@ -1,15 +1,18 @@
 package manager;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
+
+import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagersTest {
 
+    private File file;
     @Test
     void shouldNotNull() {
-        assertNotNull(Managers.getDefault());
+        assertNotNull(Managers.getDefault(file));
     }
 
     @Test

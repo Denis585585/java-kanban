@@ -38,11 +38,11 @@ public interface TaskManager {
 
     void removeSubtaskById(int id);
 
-    ArrayList<Task> showAllTask();
+    ArrayList<Task> getAllTask();
 
-    ArrayList<Epic> showAllEpic();
+    ArrayList<Epic> getAllEpic();
 
-    ArrayList<Subtask> showAllSubtasks();
+    ArrayList<Subtask> getAllSubtasks();
 
     ArrayList<Subtask> findAllSubtaskByEpicId(int id);
 
