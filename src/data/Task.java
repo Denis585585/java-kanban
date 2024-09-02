@@ -10,10 +10,23 @@ public class Task {
     protected String description; //описание задачи
     protected Status status;
 
-    public Task(int id, String title, Status status, String description) {
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
-        this.status = Status.NEW;
+        status = Status.NEW;
+    }
+
+    public Task(int id, String title, Status status, String description) {
+        this.id = id;
+        this.title = title;
+        this.status = status;
+        this.description = description;
+    }
+
+    public Task(String title, String description, Status status) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
     }
 
     public String getDescription() {
@@ -53,6 +66,10 @@ public class Task {
         if (this == obj) return true;
         if (!(obj instanceof Task task)) return false;
         return id == task.id && status == task.status;
+    }
+
+    public TaskType getType() {
+        return TaskType.TASK;
     }
 
     @Override

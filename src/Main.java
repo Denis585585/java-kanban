@@ -63,9 +63,9 @@ public class Main {
 
 
         System.out.println("Show all tasks");
-        System.out.println(taskManager.showAllSubtasks());
-        System.out.println(taskManager.showAllEpic());
-        System.out.println(taskManager.showAllTask());
+        System.out.println(taskManager.getAllSubtasks());
+        System.out.println(taskManager.getAllEpic());
+        System.out.println(taskManager.getAllTask());
 
         System.out.println("find subtasks by ID " + taskManager.findSubtaskById(subtask1.getId()));
 

@@ -36,7 +36,7 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void removeFirstInTaskHistory() {
+    void removeLastInTaskHistory() {
         history.add(task);
         history.add(epic);
         history.add(subtask);
@@ -44,6 +44,16 @@ class InMemoryHistoryManagerTest {
         history.remove(subtask.getId());
 
         assertEquals(history.getHistory(), List.of(epic, task));
+    }
+    @Test
+    void removeFirstFromTaskHistory() {
+        history.add(task);
+        history.add(epic);
+        history.add(subtask);
+
+        history.remove(task.getId());
+
+        assertEquals(history.getHistory(), List.of(subtask, epic));
     }
 
     @Test

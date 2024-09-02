@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import util.Status;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class InMemoryTaskManagerTest {
 
     InMemoryTaskManager taskManager;
@@ -18,9 +20,9 @@ class InMemoryTaskManagerTest {
     @BeforeEach
     void beforeEach() {
         taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
-        epic = new Epic(1, "Epic1", Status.NEW, "Epic description1");
-        task = new Task(2, "Task", Status.NEW, "Task description");
-        subtask = new Subtask(3, "Subtask", Status.NEW, "Subtask description", epic.getId());
+        task = new Task( "Task",  "Task description");
+        epic = new Epic( "Title", "Epic description1");
+        subtask = new Subtask("Subtask", "Subtask description", epic.getId());
     }
 
     @Test
@@ -28,7 +30,7 @@ class InMemoryTaskManagerTest {
         taskManager.addTask(task);
 
         Assertions.assertNotNull(taskManager.findTaskById(task.getId()));
-        Assertions.assertNotNull(taskManager.showAllTask());
+        Assertions.assertNotNull(taskManager.getAllTask());
     }
 
     @Test
@@ -36,7 +38,7 @@ class InMemoryTaskManagerTest {
         taskManager.addEpic(epic);
 
         Assertions.assertNotNull(taskManager.findEpicById(epic.getId()));
-        Assertions.assertNotNull(taskManager.showAllEpic());
+        Assertions.assertNotNull(taskManager.getAllEpic());
     }
 
     @Test
@@ -46,6 +48,14 @@ class InMemoryTaskManagerTest {
         taskManager.addSubtask(subtask1);
 
         Assertions.assertNotNull(taskManager.findSubtaskById(subtask1.getId()));
-        Assertions.assertNotNull(taskManager.showAllSubtasks());
+        Assertions.assertNotNull(taskManager.getAllSubtasks());
+    }
+    @Test
+    void shouldEqualsTasksWithSameId() {
+        Task task1 = new Task("Описание 1", "Имя 1");
+        Task task2 = new Task("Описание 2", "Имя 2");
+
+        task2.setId(task1.getId());
+        assertEquals(task1, task2);
     }
 }

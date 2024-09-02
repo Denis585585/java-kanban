@@ -11,7 +11,7 @@ class SubtaskTest {
 TaskManager taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
     @Test
     void ifIdEqual() {
-        Epic epic = new Epic(1, "Epic1", Status.NEW, "2133");
+        Epic epic = new Epic("Testing", "Testy");
 
         Subtask subtask1 = new Subtask(1, "Test", Status.NEW, "Check", epic.getId());
         Subtask subtask2 = new Subtask(2, "Test2", Status.NEW, "Check2", epic.getId());
