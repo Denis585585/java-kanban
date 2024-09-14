@@ -1,4 +1,5 @@
 package manager;
+
 import data.Epic;
 import data.Subtask;
 import data.Task;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import util.Status;
 
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class InMemoryHistoryManagerTest {
@@ -45,6 +47,7 @@ class InMemoryHistoryManagerTest {
 
         assertEquals(history.getHistory(), List.of(epic, task));
     }
+
     @Test
     void removeFirstFromTaskHistory() {
         history.add(task);

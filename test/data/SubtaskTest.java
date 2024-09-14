@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 import util.Status;
 
 class SubtaskTest {
-TaskManager taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
+    TaskManager taskManager = new InMemoryTaskManager(new InMemoryHistoryManager());
+
     @Test
     void ifIdEqual() {
         Epic epic = new Epic("Testing", "Testy");
