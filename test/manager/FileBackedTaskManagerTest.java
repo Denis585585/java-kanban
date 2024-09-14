@@ -1,39 +1,37 @@
 package manager;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import util.Status;
-import data.Task;
-import data.Subtask;
-import data.Epic;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
-class FileBackedTaskManagerTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-    private File file;
-    private Task task;
-    private Epic epic;
-    private Subtask subtask;
+class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskManager> {
 
-    @BeforeEach
-    void beforeEach() throws IOException {
+    File file;
+
+    FileBackedTaskManagerTest() throws IOException {
         file = File.createTempFile("test", ".csv");
-        task = new Task("testTask", "testTaskDescription", Status.IN_PROGRESS);
-        epic = new Epic("testEpic", "testEpicDescription", Status.IN_PROGRESS);
-        subtask = new Subtask("testSub", "testSubDescription", Status.IN_PROGRESS,  2);
+        taskManager = new FileBackedTaskManager(file);
     }
+
 
     @Test
     void testLoadFromFile() {
         FileBackedTaskManager fileBackedTaskManager = new FileBackedTaskManager(file);
 
+        task.setStartTime(LocalDateTime.now());
+        task.setDuration(Duration.ofMinutes(20));
         fileBackedTaskManager.addTask(task);
+
         fileBackedTaskManager.addEpic(epic);
+
+        subtask.setStartTime(LocalDateTime.now().plusMinutes(30));
+        subtask.setDuration(Duration.ofMinutes(20));
         fileBackedTaskManager.addSubtask(subtask);
 
         assertEquals(1, fileBackedTaskManager.tasks.size());
