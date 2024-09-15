@@ -1,6 +1,6 @@
 package manager;
 
-class InMemoryTaskManagerTest extends TaskManagerTest<InMemoryTaskManager> {
+class InMemoryTaskManagerTest extends TaskManagersTest<InMemoryTaskManager> {
 
     InMemoryTaskManagerTest() {
         taskManager = new InMemoryTaskManager();

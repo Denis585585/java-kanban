@@ -37,7 +37,7 @@ public class InMemoryTaskManager implements TaskManager {
         return new ArrayList<>(priority);
     }
 
-    public void updateEpicTime(Epic epic) {
+    private void updateEpicTime(Epic epic) {
         List<Task> subtaskList = getPrioritizedTasks().stream()
                 .filter(task -> task instanceof Subtask)
                 .filter(task -> ((Subtask) task).getEpicId() == epic.getId())
@@ -56,7 +56,7 @@ public class InMemoryTaskManager implements TaskManager {
         epic.setDuration(duration);
     }
 
-    public void addPrioritizedTask(Task task) {
+    private void addPrioritizedTask(Task task) {
         if (task instanceof Epic) return;
         List<Task> taskList = getPrioritizedTasks();
         if (task.getStartTime() != null && task.getEndTime() != null) {

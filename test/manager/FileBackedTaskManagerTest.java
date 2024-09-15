@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class FileBackedTaskManagerTest extends TaskManagerTest<FileBackedTaskManager> {
+class FileBackedTaskManagerTest extends TaskManagersTest<FileBackedTaskManager> {
 
     File file;
 

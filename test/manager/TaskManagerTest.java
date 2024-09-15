@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-abstract class TaskManagerTest<T extends TaskManager> {
+abstract class TaskManagersTest<T extends TaskManager> {
     protected T taskManager;
     protected Task task;
     protected Epic epic;
