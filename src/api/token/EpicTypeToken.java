@@ -1,9 +1,9 @@
-package httpApi.token;
+package api.token;
 
 import com.google.gson.reflect.TypeToken;
 import data.Task;
 
 import java.util.List;
 
-public class TaskTypeToken extends TypeToken<List<Task>> {
+public class EpicTypeToken extends TypeToken<List<Task>> {
 }

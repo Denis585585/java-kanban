@@ -1,11 +1,11 @@
-package httpApi;
+package api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sun.net.httpserver.HttpServer;
-import httpApi.adapters.DurationAdapter;
-import httpApi.adapters.LocalDataTimeAdapter;
-import httpApi.handlers.*;
+import api.adapters.DurationAdapter;
+import api.adapters.LocalDataTimeAdapter;
+import api.handlers.*;
 import manager.TaskManager;
 
 import java.io.IOException;
