@@ -1,13 +1,9 @@
 package api.handlers;
 
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import data.Epic;
-import data.Subtask;
-import data.Task;
 import exceptions.ManagerSaveException;
-import manager.TaskManager;
+import exceptions.NotFoundException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,11 +13,6 @@ import java.nio.charset.StandardCharsets;
 
 public abstract class BaseHttpHandler implements HttpHandler {
 
-    protected TaskManager taskManager;
-    protected Gson gson;
-    protected Task task;
-    protected Epic epic;
-    protected Subtask subtask;
 
     protected enum Endpoints {
         GET,
@@ -35,16 +26,11 @@ public abstract class BaseHttpHandler implements HttpHandler {
 
     private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
-    public BaseHttpHandler(TaskManager taskManager, Gson gson) {
-        this.taskManager = taskManager;
-        this.gson = gson;
-    }
-
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         try {
             safeHandle(exchange);
-        } catch (NullPointerException e) {
+        } catch (NotFoundException e) {
             sendNotFound(exchange);
         } catch (ManagerSaveException e) {
             sendHasInteractions(exchange);

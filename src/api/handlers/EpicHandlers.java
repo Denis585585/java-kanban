@@ -1,22 +1,17 @@
 package api.handlers;
-
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import data.Epic;
-import manager.TaskManager;
-
 import java.io.IOException;
+import static api.HttpTaskServer.gson;
+import static api.HttpTaskServer.taskManager;
 
 public class EpicHandlers extends BaseHttpHandler {
-
-    public EpicHandlers(TaskManager taskManager, Gson gson) {
-        super(taskManager, gson);
-    }
 
     @Override
     public void safeHandle(HttpExchange exchange) throws IOException {
         Endpoints endpoint = getEndpoint(exchange);
         String[] split = exchange.getRequestURI().getPath().split("/");
+        Epic epic;
         switch (endpoint) {
             case GET -> sendText(exchange, gson.toJson(taskManager.getAllEpic()));
             case GET_BY_ID -> sendText(exchange, gson.toJson(taskManager.findEpicById(Integer.parseInt(split[2]))));

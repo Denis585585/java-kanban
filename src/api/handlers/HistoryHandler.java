@@ -1,15 +1,14 @@
 package api.handlers;
 
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
-import manager.TaskManager;
 
 import java.io.IOException;
 
+import static api.HttpTaskServer.gson;
+import static api.HttpTaskServer.taskManager;
+
 public class HistoryHandler extends BaseHttpHandler {
-    public HistoryHandler(TaskManager taskManager, Gson gson) {
-        super(taskManager, gson);
-    }
+
 
     @Override
     public void safeHandle(HttpExchange exchange) throws IOException {

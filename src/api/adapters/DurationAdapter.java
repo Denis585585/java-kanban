@@ -15,7 +15,6 @@ public class DurationAdapter extends TypeAdapter<Duration> {
         if (duration != null) {
             jsonWriter.value(duration.toString());
         }
-        jsonWriter.nullValue();
     }
 
     @Override
@@ -23,7 +22,7 @@ public class DurationAdapter extends TypeAdapter<Duration> {
         if (jsonReader != null) {
             return Duration.parse(jsonReader.nextString());
         }
-        jsonReader.nextNull();
+
         return null;
     }
 }

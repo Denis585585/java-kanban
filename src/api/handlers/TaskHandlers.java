@@ -1,21 +1,21 @@
 package api.handlers;
 
-import com.google.gson.Gson;
 import com.sun.net.httpserver.HttpExchange;
 import data.Task;
-import manager.TaskManager;
 
 import java.io.IOException;
 
+import static api.HttpTaskServer.gson;
+import static api.HttpTaskServer.taskManager;
+
 public class TaskHandlers extends BaseHttpHandler {
-    public TaskHandlers(TaskManager taskManager, Gson gson) {
-        super(taskManager, gson);
-    }
+
 
     @Override
     public void safeHandle(HttpExchange exchange) throws IOException {
         Endpoints endpoint = getEndpoint(exchange);
         String[] split = exchange.getRequestURI().getPath().split("/");
+        Task task;
         switch (endpoint) {
             case GET -> sendText(exchange, gson.toJson(taskManager.getAllTask()));
             case GET_BY_ID -> sendText(exchange, gson.toJson(taskManager.findTaskById(Integer.parseInt(split[2]))));

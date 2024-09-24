@@ -3,6 +3,7 @@ package manager;
 import data.Epic;
 import data.Subtask;
 import data.Task;
+import data.TaskType;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -24,9 +25,9 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             while (bufferedReader.ready()) {
                 String line = bufferedReader.readLine();
                 Task task = CSVTaskFormat.fromString(line);
-                if (task instanceof Epic) {
+                if (task.getType().equals(TaskType.EPIC)) {
                     fileBackedTaskManager.addEpic((Epic) task);
-                } else if (task instanceof Subtask) {
+                } else if (task.getType().equals(TaskType.SUBTASK)) {
                     fileBackedTaskManager.addSubtask((Subtask) task);
                 } else {
                     fileBackedTaskManager.addTask(task);
